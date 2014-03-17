@@ -21,7 +21,6 @@
     
     <preference name="phonegap-version" value="3.1.0" />
     
-    <gap:plugin name="com.adobe.plugins.fastcanvas" />
     <gap:plugin name="org.apache.cordova.device-motion" />
 
 </widget>
