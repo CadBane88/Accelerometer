@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+    <widget xmlns   = "http://www.w3.org/ns/widgets"
+        xmlns:gap   = "http://phonegap.com/ns/1.0"
+        id          = "com.phonegap.example"
+        versionCode = "10" 
+        version   = "0.1" >
+
+    <!-- versionCode is optional and Android only -->
+
+    <name>Accelerometer Test</name>
+
+    <description>
+        Test
+    </description>
+
+    <author href="http://www.mcainternet.com" email="brad@mcainternet.com">
+        Brad Hagedorn
+    </author>
+    
+    <access origin="*" browserOnly="true"/>
+    
+    <preference name="phonegap-version" value="3.1.0" />
+    
+    <gap:plugin name="com.adobe.plugins.fastcanvas" />
+    <gap:plugin name="org.apache.cordova.device-motion" />
+
+</widget>
