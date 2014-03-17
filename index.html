@@ -47,6 +47,19 @@
                             'Acceleration Y: ' + acceleration.y + '<br />' +
                             'Acceleration Z: ' + acceleration.z + '<br />' + 
                             'Timestamp: '      + acceleration.timestamp + '<br />';
+							
+		if(Math.abs(parseFloat($('#accelx').val())) < Math.abs(acceleration.x))
+		{
+			$('#accelx').val(acceleration.x);
+		}
+		if(Math.abs(parseFloat($('#accely').val())) < Math.abs(acceleration.y))
+		{
+			$('#accely').val(acceleration.y);
+		}
+		if(Math.abs(parseFloat($('#accelz').val())) < Math.abs(acceleration.z))
+		{
+			$('#accelz').val(acceleration.z);
+		}
     }
 
     // onError: Failed to get the acceleration
@@ -59,6 +72,11 @@
   </head>
   <body>
     <div id="accelerometer">Waiting for accelerometer...</div>
+    
+    <input type="text" id="accelx" value="0"/><br />
+    <input type="text" id="accely" value="0"/><br />
+    <input type="text" id="accelz" value="0"/><br />
+    
     <button onclick="stopWatch();">Stop Watching</button>
   </body>
 </html>
