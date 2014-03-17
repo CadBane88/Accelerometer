@@ -8,6 +8,11 @@
     <script src="cordova.js" type="text/javascript"></script>
     <script type="text/javascript" charset="utf-8">
 
+	var db;
+	var x_value;
+	var y_value;
+	var z_value;
+
     // The watch id references the current `watchAcceleration`
     var watchID = null;
 
@@ -18,10 +23,9 @@
     // PhoneGap is ready
     //
     function onDeviceReady() {
-        startWatch();
-		
-		var db = window.openDatabase("test", "1.0", "Test DB", 1000000);
+		db = window.openDatabase("test", "1.0", "Test DB", 1000000);
 		db.transaction(populateDB, errorCB, successCB);
+		startWatch();
     }
 
     // Start watching the acceleration
@@ -63,6 +67,11 @@
 		{
 			$('#accelz').val(acceleration.z);
 		}
+		
+		x_value = acceleration.x;
+		y_value = acceleration.y;
+		z_value = acceleration.z;
+		db.transaction(populateDB, errorCB, successCB);
     }
 
     // onError: Failed to get the acceleration
@@ -78,11 +87,23 @@
 	
 	// Populate the database
     //
-    function populateDB(tx) {
+    /*function populateDB(tx) {
         tx.executeSql('DROP TABLE IF EXISTS DEMO');
         tx.executeSql('CREATE TABLE IF NOT EXISTS DEMO (id unique, data)');
         tx.executeSql('INSERT INTO DEMO (id, data) VALUES (1, "First row")');
         tx.executeSql('INSERT INTO DEMO (id, data) VALUES (2, "Second row")');
+    }*/
+	
+	function populateDB(tx) {
+        tx.executeSql('DROP TABLE IF EXISTS x_table');
+		tx.executeSql('DROP TABLE IF EXISTS y_table');
+		tx.executeSql('DROP TABLE IF EXISTS z_table');
+        tx.executeSql('CREATE TABLE IF NOT EXISTS x_table (x_value, data)');
+		tx.executeSql('CREATE TABLE IF NOT EXISTS y_table (y_value, data)');
+		tx.executeSql('CREATE TABLE IF NOT EXISTS z_table (z_value, data)');
+        tx.executeSql('INSERT INTO x_table (x_value, data) VALUES (' + x_val + ', "")');
+		tx.executeSql('INSERT INTO y_table (y_value, data) VALUES (' + y_val + ', "")');
+		tx.executeSql('INSERT INTO z_table (z_value, data) VALUES (' + z_val + ', "")');
     }
 
     // Transaction error callback
