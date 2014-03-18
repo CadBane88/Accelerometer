@@ -96,14 +96,14 @@
 	
 	function populateDB(tx) {
         tx.executeSql('DROP TABLE IF EXISTS x_table');
-		tx.executeSql('DROP TABLE IF EXISTS y_table');
-		tx.executeSql('DROP TABLE IF EXISTS z_table');
+		//tx.executeSql('DROP TABLE IF EXISTS y_table');
+		//tx.executeSql('DROP TABLE IF EXISTS z_table');
         tx.executeSql('CREATE TABLE IF NOT EXISTS x_table (x_value, data)');
-		tx.executeSql('CREATE TABLE IF NOT EXISTS y_table (y_value, data)');
-		tx.executeSql('CREATE TABLE IF NOT EXISTS z_table (z_value, data)');
-        tx.executeSql('INSERT INTO x_table (x_value, data) VALUES (' + x_val + ', "")');
-		tx.executeSql('INSERT INTO y_table (y_value, data) VALUES (' + y_val + ', "")');
-		tx.executeSql('INSERT INTO z_table (z_value, data) VALUES (' + z_val + ', "")');
+		//tx.executeSql('CREATE TABLE IF NOT EXISTS y_table (y_value, data)');
+		//tx.executeSql('CREATE TABLE IF NOT EXISTS z_table (z_value, data)');
+        tx.executeSql('INSERT INTO x_table (x_value, data) VALUES (' + x_val + ', " ")');
+		//tx.executeSql('INSERT INTO y_table (y_value, data) VALUES (' + y_val + ', " ")');
+		//tx.executeSql('INSERT INTO z_table (z_value, data) VALUES (' + z_val + ', " ")');
     }
 
     // Transaction error callback
