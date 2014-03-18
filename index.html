@@ -24,7 +24,7 @@
     //
     function onDeviceReady() {
 		db = window.openDatabase("test", "1.0", "Test DB", 1000000);
-		db.transaction(populateDB, errorCB, successCB);
+		db.transaction(dropTables, errorCB, successCB);
 		startWatch();
     }
 
@@ -44,6 +44,7 @@
             navigator.accelerometer.clearWatch(watchID);
             watchID = null;
         }
+		db.transaction(dropTables, errorCB, successCB);
     }
 
     // onSuccess: Get a snapshot of the current acceleration
@@ -95,9 +96,6 @@
     }*/
 	
 	function populateDB(tx) {
-        tx.executeSql('DROP TABLE IF EXISTS x_table');
-		tx.executeSql('DROP TABLE IF EXISTS y_table');
-		tx.executeSql('DROP TABLE IF EXISTS z_table');
         tx.executeSql('CREATE TABLE IF NOT EXISTS x_table (x_value, data)');
 		tx.executeSql('CREATE TABLE IF NOT EXISTS y_table (y_value, data)');
 		tx.executeSql('CREATE TABLE IF NOT EXISTS z_table (z_value, data)');
@@ -105,6 +103,12 @@
 		tx.executeSql('INSERT INTO y_table (y_value, data) VALUES (' + y_value + ', " ")');
 		tx.executeSql('INSERT INTO z_table (z_value, data) VALUES (' + z_value + ', " ")');
     }
+	
+	function dropTables(tx) {
+		tx.executeSql('DROP TABLE IF EXISTS x_table');
+		tx.executeSql('DROP TABLE IF EXISTS y_table');
+		tx.executeSql('DROP TABLE IF EXISTS z_table');	
+	}
 
     // Transaction error callback
     //
@@ -115,7 +119,7 @@
     // Transaction success callback
     //
     function successCB() {
-        alert("success!");
+        // alert("success!");
     }
 	
     </script>
