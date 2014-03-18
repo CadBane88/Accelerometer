@@ -12,6 +12,7 @@
 	var x_value;
 	var y_value;
 	var z_value;
+	var time = 0;
 
     // The watch id references the current `watchAcceleration`
     var watchID = null;
@@ -99,15 +100,20 @@
         tx.executeSql('CREATE TABLE IF NOT EXISTS x_table (x_value, data)');
 		tx.executeSql('CREATE TABLE IF NOT EXISTS y_table (y_value, data)');
 		tx.executeSql('CREATE TABLE IF NOT EXISTS z_table (z_value, data)');
+		tx.executeSql('CREATE TABLE IF NOT EXISTS time (time_value, data)');
         tx.executeSql('INSERT INTO x_table (x_value, data) VALUES (' + x_value + ', " ")');
 		tx.executeSql('INSERT INTO y_table (y_value, data) VALUES (' + y_value + ', " ")');
 		tx.executeSql('INSERT INTO z_table (z_value, data) VALUES (' + z_value + ', " ")');
+		time = time + 100;
+		tx.executeSql('INSERT INTO time (time_value, data) VALUES (' + time + ', " ")');
+		
     }
 	
 	function dropTables(tx) {
 		tx.executeSql('DROP TABLE IF EXISTS x_table');
 		tx.executeSql('DROP TABLE IF EXISTS y_table');
-		tx.executeSql('DROP TABLE IF EXISTS z_table');	
+		tx.executeSql('DROP TABLE IF EXISTS z_table');
+		tx.executeSql('DROP TABLE IF EXISTS time');	
 	}
 
     // Transaction error callback
