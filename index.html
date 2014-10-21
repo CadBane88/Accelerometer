@@ -33,7 +33,7 @@
     //
     function startWatch() {
 
-        var options = { frequency: 100 };
+        var options = { frequency: 50 }; // frequency in ms (40 ms minimum)
 
         watchID = navigator.accelerometer.watchAcceleration(onSuccess, onError, options);
     }
@@ -104,7 +104,7 @@
         tx.executeSql('INSERT INTO x_table (x_value, data) VALUES (' + x_value + ', " ")');
 		tx.executeSql('INSERT INTO y_table (y_value, data) VALUES (' + y_value + ', " ")');
 		tx.executeSql('INSERT INTO z_table (z_value, data) VALUES (' + z_value + ', " ")');
-		time = time + 100;
+		time = time + 40;
 		tx.executeSql('INSERT INTO time (time_value, data) VALUES (' + time + ', " ")');
 		
     }

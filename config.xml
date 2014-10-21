@@ -19,8 +19,6 @@
     
     <access origin="*" browserOnly="true"/>
     
-    <preference name="phonegap-version" value="3.1.0" />
-    
     <gap:plugin name="org.apache.cordova.device-motion" />
 
 </widget>
